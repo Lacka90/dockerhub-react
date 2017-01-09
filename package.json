@@ -1,0 +1,51 @@
+{
+  "name": "dockerhub-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "rimraf ./dist && NODE_ENV=dev && webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lacka90/dockerhub-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lacka90/dockerhub-react/issues"
+  },
+  "homepage": "https://github.com/Lacka90/dockerhub-react#readme",
+  "devDependencies": {
+    "@types/react": "0.0.0",
+    "@types/react-dom": "^0.14.20",
+    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "bootstrap": "^3.3.7",
+    "codelyzer": "^2.0.0-beta.4",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.26.0",
+    "jquery": "^3.1.1",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.2.0",
+    "postcss-loader": "^1.2.1",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.2",
+    "react-hot-loader": "^1.3.1",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.1.1",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^1.3.3",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.4",
+    "uglify-loader": "^1.4.0",
+    "url-loader": "^0.5.7",
+    "webpack": "2.2.0-rc.0",
+    "webpack-dev-server": "2.2.0-rc.0"
+  }
+}
