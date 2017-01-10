@@ -36,10 +36,10 @@ const webpackConfig = {
         test: /\.tsx?$/,
         loaders: ['react-hot-loader', 'ts-loader?silent=true'],
       }, {
-        test: /\.(otf|eot|svg|ttf|woff2?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader',
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        loader: 'url-loader',
         query: { name: '/assets/fonts/[name].[ext]' },
-      }, {
+      },{
         test: /\.html$/,
         exclude: /node_modules/,
         loader: 'html-loader',
@@ -55,29 +55,13 @@ const webpackConfig = {
         test: /\.jpg$/, 
         loader: "file-loader" 
       },
-      {
-        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
-      },
-      {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'file-loader'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
-      }
     ],
   },
 
   // postcss: [autoprefixer],
 
   resolve: {
-    extensions: ['*', '.js', '.ts', '.tsx'],
+    extensions: ['*', '.js', 'jsx', '.ts', '.tsx'],
   },
 
   plugins: [
@@ -100,11 +84,6 @@ const webpackConfig = {
       allChunks: true,
     }),
   ],
-
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
-  },
 };
 
 if (DEV) {
