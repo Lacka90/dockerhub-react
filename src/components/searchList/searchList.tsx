@@ -29,6 +29,10 @@ export class SearchList extends React.Component<any, undefined> {
     }
   }
 
+  componentWillUnmount() {
+    store.dispatch(updateFetchList([], ''));
+  }
+
   render() {
     return (
       <ul>

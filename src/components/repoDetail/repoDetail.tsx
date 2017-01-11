@@ -6,12 +6,13 @@ import { Link } from 'react-router';
 import { store } from '../../store';
 import { updateRepoDetail } from '../../reducers/actions'
 
-const REPO_URL = 'https://hub.docker.com/v2/repositories/library/';
+const REPO_URL = 'https://hub.docker.com/v2/repositories/';
 
 export class RepoDetail extends React.Component<any, undefined> {
   componentDidMount() {
-    const repoName = this.props.params.repo;
-    fetch(`${REPO_URL}${repoName}`).then(res => {
+    const repoNames = this.nameCreator(this.props.params);
+
+    fetch(`${REPO_URL}${repoNames}`).then(res => {
       return res.json();
     }).then(repo => {
       store.dispatch(updateRepoDetail(repo));
@@ -19,14 +20,30 @@ export class RepoDetail extends React.Component<any, undefined> {
   }
 
   componentDidUpdate(prevProps: any, prevState: any) {
-    const repoName = this.props.params.repo;
-    if (repoName !== prevProps.params.repo) {
-      fetch(`${REPO_URL}${repoName}`).then(res => {
+    const repoNames = this.nameCreator(this.props.params);
+    const prevNames = this.nameCreator(prevProps.params);
+
+    if (repoNames !== prevNames) {
+      fetch(`${REPO_URL}${repoNames}`).then(res => {
         return res.json();
       }).then(repo => {
         store.dispatch(updateRepoDetail(repo));
       });
     }
+  }
+
+  componentWillUnmount() {
+    store.dispatch(updateRepoDetail({}));
+  }
+
+  nameCreator(params) {
+    const repoNames = [params.repo];
+    if (params.subrepo) {
+      repoNames.push(params.subrepo);
+    } else {
+      repoNames.unshift('library');
+    }
+    return repoNames.join('/');
   }
 
   render() {
