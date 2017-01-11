@@ -4,7 +4,7 @@ import * as isEqual from 'lodash/isEqual';
 import { Link } from 'react-router';
 
 import { store } from '../../store';
-import { updateRepoDetail } from '../../reducers/actions'
+import { updateRepoDetail, addFavourite } from '../../reducers/actions'
 
 const REPO_URL = 'https://hub.docker.com/v2/repositories/';
 
@@ -46,10 +46,14 @@ export class RepoDetail extends React.Component<any, undefined> {
     return repoNames.join('/');
   }
 
+  toggleFavourite(details) {
+    store.dispatch(addFavourite(details));
+  }
+
   render() {
     return (
       <div>
-        <h1>{ this.props.details.name }</h1>
+        <h1>{ this.props.details.name }</h1> <span className="glyphicon glyphicon-star" onClick={this.toggleFavourite.bind(this, this.props.details)}></span>
         <div>Namespace: { this.props.details.namespace }</div>
         <div>User: { this.props.details.user }</div>
         <div>Last updated: { this.props.details.last_updated }</div>

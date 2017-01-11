@@ -11,6 +11,7 @@ import { repos } from './data/repos';
 const initialState = {
   repos: [],
   details: {},
+  favourites: [],
 };
 
 const loggerMiddleware = createLogger()

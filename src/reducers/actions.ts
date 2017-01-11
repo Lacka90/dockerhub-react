@@ -19,3 +19,10 @@ export function updateRepoDetail(repo) {
     repo,
   }
 }
+
+export function addFavourite(favourite) {
+  return {
+    type: 'ADD_FAVOURITE',
+    favourite,
+  }
+}

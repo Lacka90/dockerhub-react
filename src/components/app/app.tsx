@@ -7,6 +7,7 @@ function mapStateToProps(state: any) {
   return {
     repos: state.repos,
     details: state.details,
+    favourites: state.favourites,
   }
 }
 

@@ -17,7 +17,7 @@ export class Wrapper extends React.Component<any, undefined> {
           <div className="col-xs-12">
             <div className="row">
               <div className="hidden-xs col-sm-3">
-                <Favourites></Favourites>
+                <Favourites favourites={this.props.favourites}></Favourites>
               </div>
               <div className="col-xs-12 col-sm-9">
                 {React.cloneElement(this.props.children, this.props)}
