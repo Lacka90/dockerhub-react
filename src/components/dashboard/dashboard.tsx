@@ -12,6 +12,7 @@ export class Dashboard extends React.Component<any, undefined> {
     return (
       <div>
         <h1>Dashboard</h1>
+        {JSON.stringify(this.props.user)}
         <a onClick={this.logout.bind(this)}>Log out</a>
       </div>
     );
