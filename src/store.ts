@@ -11,6 +11,7 @@ import { repos } from './data/repos';
 const favouriteList = JSON.parse(localStorage.getItem('FAVOURITE_LIST'));
 
 const initialState = {
+  user: {},
   repos: [],
   details: {},
   favourites: favouriteList || [],

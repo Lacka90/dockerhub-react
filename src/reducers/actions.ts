@@ -26,3 +26,10 @@ export function toggleFavourite(favourite) {
     favourite,
   }
 }
+
+export function authenticate(user) {
+  return {
+    type: 'AUTHENTICATE',
+    user,
+  }
+}

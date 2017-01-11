@@ -1,7 +1,4 @@
-import * as concat from 'lodash/concat';
-import * as find from 'lodash/find';
-import * as remove from 'lodash/remove';
-import * as cloneDeep from 'lodash/cloneDeep';
+import { concat, find, remove, cloneDeep } from 'lodash';
 
 export function repos(state = [], action) {
   switch (action.type) {
@@ -34,6 +31,16 @@ export function favourites(state = [], action) {
         state = concat(state, [action.favourite]);
       }
       localStorage.setItem('FAVOURITE_LIST', JSON.stringify(state));
+      return state;
+    default:
+      return state;
+  }
+}
+
+export function user(state = {}, action) {
+  switch (action.type) {
+    case 'AUTHENTICATE':
+      state = action.user;
       return state;
     default:
       return state;
