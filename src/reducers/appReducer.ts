@@ -1,6 +1,7 @@
 import * as concat from 'lodash/concat';
 import * as find from 'lodash/find';
-import * as filter from 'lodash/filter';
+import * as remove from 'lodash/remove';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 export function repos(state = [], action) {
   switch (action.type) {
@@ -27,7 +28,8 @@ export function favourites(state = [], action) {
     case 'TOGGLE_FAVOURITE':
       const found = find(state, (fav) => fav.namespace === action.favourite.namespace && fav.name === action.favourite.name);
       if (found) {
-        state = filter(state, (fav) => fav.namespace !== action.favourite.namespace && fav.name !== action.favourite.name);
+        remove(state, (fav) => fav.namespace === action.favourite.namespace && fav.name === action.favourite.name);
+        state = cloneDeep(state);
       } else {
         state = concat(state, [action.favourite]);
       }

@@ -5,9 +5,11 @@ export class Favourite extends React.Component<any, undefined> {
   render() {
     const url = `/details/${this.props.favourite.namespace}/${this.props.favourite.name}`;
     return (
-      <Link to={ url }>
-        { this.props.favourite.namespace }/{ this.props.favourite.name }
-      </Link>
+      <li>
+        <Link to={ url }>
+          { this.props.favourite.namespace }/{ this.props.favourite.name }
+        </Link>
+      </li>
     );
   }
 }
