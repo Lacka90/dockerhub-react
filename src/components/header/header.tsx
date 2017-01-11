@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { Link, hashHistory } from 'react-router';
+import { store } from '../../store';
+import { authenticate } from '../../reducers/actions';
+
+import './header.scss';
 
 export class Header extends React.Component<any, undefined> {
   private textInput: HTMLInputElement = null;
@@ -15,6 +19,11 @@ export class Header extends React.Component<any, undefined> {
     }
   }
 
+  logout = () => {
+    window['FB'].logout();
+    store.dispatch(authenticate({}));
+  }
+
   render() {
     return (
       <nav className="navbar navbar-default">
@@ -23,7 +32,7 @@ export class Header extends React.Component<any, undefined> {
             <Link className="navbar-brand" to="/" activeClassName="active">DockerHub</Link>
           </div>
           
-          <form className="navbar-form navbar-right">
+          <form className="navbar-form navbar-left">
             <div className="form-group">
               <input type="text"
                 className="form-control"
@@ -36,6 +45,12 @@ export class Header extends React.Component<any, undefined> {
               <span className="glyphicon glyphicon-search"></span>
             </button>
           </form>
+
+          <div className="navbar-right">
+            <p className="navbar-text">{this.props.user.name}</p>
+            <img className="header-avatar" src={this.props.user.picture.data.url} />
+            <span className="header-logout glyphicon glyphicon-off" onClick={this.logout}></span>
+          </div>
         </div>
       </nav>
     );
