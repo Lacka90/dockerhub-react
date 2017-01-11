@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as fetch from 'isomorphic-fetch';
-import * as isEqual from 'lodash/isEqual';
-import * as find from 'lodash/find';
+import { isEqual, find } from 'lodash';
 import { Link } from 'react-router';
 
 import { store } from '../../store';
