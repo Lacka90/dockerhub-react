@@ -9,7 +9,8 @@ import { rootReducer } from './reducers';
 import { repos } from './data/repos';
 
 const initialState = {
-  repos,
+  repos: [],
+  details: {},
 };
 
 const loggerMiddleware = createLogger()

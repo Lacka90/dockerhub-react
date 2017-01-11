@@ -12,3 +12,10 @@ export function updateFetchList(repos, query) {
     repos,
   }
 }
+
+export function updateRepoDetail(repo) {
+  return {
+    type: 'UPDATE_REPO_DETAIL',
+    repo,
+  }
+}

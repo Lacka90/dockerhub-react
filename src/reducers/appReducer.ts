@@ -7,3 +7,13 @@ export function repos(state = [], action) {
       return state;
   }
 }
+
+export function details(state = {}, action) {
+  switch (action.type) {
+    case 'UPDATE_REPO_DETAIL':
+      state = action.repo;
+      return state;
+    default:
+      return state;
+  }
+}

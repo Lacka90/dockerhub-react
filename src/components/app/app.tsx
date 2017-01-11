@@ -6,6 +6,7 @@ import { Wrapper } from '../wrapper/wrapper';
 function mapStateToProps(state: any) {
   return {
     repos: state.repos,
+    details: state.details,
   }
 }
 

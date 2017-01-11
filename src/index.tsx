@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { App } from './components/app/app';
 import { Welcome } from './components/welcome/welcome';
 import { SearchList } from './components/searchList/searchList';
+import { RepoDetail } from './components/repoDetail/repoDetail';
 
 import { NotFound } from './components/notFound/notFound';
 
@@ -21,6 +22,7 @@ const router = (
     <Route path="/" component={App}>
       <IndexRoute component={Welcome}></IndexRoute>
       <Route path="/search/:name" component={SearchList}></Route>
+      <Route path="/details/:repo(/:subrepo)" component={RepoDetail}></Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>

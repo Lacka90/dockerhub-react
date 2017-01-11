@@ -9,6 +9,12 @@ export class Header extends React.Component<any, undefined> {
     hashHistory.push('/search/' + searchParam);
   }
 
+  componentDidMount() {
+    if (this.props.name) {
+      this.textInput.value = this.props.name;
+    }
+  }
+
   render() {
     return (
       <nav className="navbar navbar-default">
