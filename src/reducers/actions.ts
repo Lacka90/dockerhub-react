@@ -20,9 +20,9 @@ export function updateRepoDetail(repo) {
   }
 }
 
-export function addFavourite(favourite) {
+export function toggleFavourite(favourite) {
   return {
-    type: 'ADD_FAVOURITE',
+    type: 'TOGGLE_FAVOURITE',
     favourite,
   }
 }
