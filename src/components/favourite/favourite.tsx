@@ -6,7 +6,7 @@ export class Favourite extends React.Component<any, undefined> {
     const url = `/details/${this.props.favourite.namespace}/${this.props.favourite.name}`;
     return (
       <li>
-        <Link to={ url }>
+        <Link to={ url } activeClassName="active">
           { this.props.favourite.namespace }/{ this.props.favourite.name }
         </Link>
       </li>

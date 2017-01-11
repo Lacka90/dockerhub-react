@@ -7,7 +7,7 @@ import { store } from '../../store';
 export class Favourites extends React.Component<any, undefined> {
   render() {
     return (
-      <ul>
+      <ul className="nav nav-pills nav-stacked">
         {
           this.props.favourites.map(favourite => {
             const key = `${favourite.namespace}/${favourite.name}`;

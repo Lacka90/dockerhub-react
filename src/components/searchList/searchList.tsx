@@ -35,14 +35,14 @@ export class SearchList extends React.Component<any, undefined> {
 
   render() {
     return (
-      <ul>
+      <div className="list-group">
         {this.props.repos.map(repo =>
           <Repo
             key={repo.repo_name}
             {...repo}
           />
         )}
-      </ul>
+      </div>
     );
   }
 }

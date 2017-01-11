@@ -61,12 +61,16 @@ export class RepoDetail extends React.Component<any, undefined> {
   render() {
     const starElement = this.activeStar(this.props.favourites, this.props.details);
     return (
-      <div>
-        <h1>{ this.props.details.name }</h1> { starElement }
-        <div>Namespace: { this.props.details.namespace }</div>
-        <div>User: { this.props.details.user }</div>
-        <div>Last updated: { this.props.details.last_updated }</div>
-        <div>Star count: { this.props.details.star_count }</div>
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title">{ this.props.details.name } { starElement }</h3>
+        </div>
+        <div className="panel-body">
+          <div>Namespace: { this.props.details.namespace }</div>
+          <div>User: { this.props.details.user }</div>
+          <div>Last updated: { this.props.details.last_updated }</div>
+          <div>Star count: { this.props.details.star_count }</div>
+        </div>
       </div>
     );
   }

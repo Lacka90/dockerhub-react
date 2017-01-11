@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 export class Repo extends React.Component<any, undefined> {
+  go(url) {
+    hashHistory.push(url);
+  }
+
   render() {
     const url = `/details/${this.props.repo_name}`;
     return (
-      <li>
-        <Link to={ url }>{this.props.repo_name}</Link>
-      </li>
+      <button type="button" className="list-group-item" onClick={this.go.bind(this, url)}>{this.props.repo_name}</button>
     );
   }
 }

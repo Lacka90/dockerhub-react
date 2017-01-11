@@ -10,10 +10,13 @@ export class Dashboard extends React.Component<any, undefined> {
 
   render() {
     return (
-      <div>
-        <h1>Dashboard</h1>
-        {JSON.stringify(this.props.user)}
-        <a onClick={this.logout.bind(this)}>Log out</a>
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title">Dashboard</h3>
+        </div>
+        <div className="panel-body">
+          <pre style={ {whiteSpace: 'pre-wrap'} }>{JSON.stringify(this.props.user, null, 2)}</pre>
+        </div>
       </div>
     );
   }
