@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as fetch from 'isomorphic-fetch';
 import * as isEqual from 'lodash/isEqual';
+import * as find from 'lodash/find';
 import { Link } from 'react-router';
 
 import { store } from '../../store';
@@ -50,10 +51,19 @@ export class RepoDetail extends React.Component<any, undefined> {
     store.dispatch(toggleFavourite(details));
   }
 
+  activeStar(favourites, details) {
+    if (find(favourites, (favourite) => favourite.namespace === details.namespace && favourite.name === details.name)) {
+      return <span className="glyphicon glyphicon-star" onClick={this.toggleFav.bind(this, this.props.details)}></span>
+    } else {
+      return <span className="glyphicon glyphicon-star-empty" onClick={this.toggleFav.bind(this, this.props.details)}></span>
+    }
+  }
+
   render() {
+    const starElement = this.activeStar(this.props.favourites, this.props.details);
     return (
       <div>
-        <h1>{ this.props.details.name }</h1> <span className="glyphicon glyphicon-star" onClick={this.toggleFav.bind(this, this.props.details)}></span>
+        <h1>{ this.props.details.name }</h1> { starElement }
         <div>Namespace: { this.props.details.namespace }</div>
         <div>User: { this.props.details.user }</div>
         <div>Last updated: { this.props.details.last_updated }</div>

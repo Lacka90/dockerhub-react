@@ -1,6 +1,6 @@
 import * as concat from 'lodash/concat';
-import * as includes from 'lodash/includes';
-import * as without from 'lodash/without';
+import * as find from 'lodash/find';
+import * as remove from 'lodash/remove';
 
 export function repos(state = [], action) {
   switch (action.type) {
@@ -25,11 +25,13 @@ export function details(state = {}, action) {
 export function favourites(state = [], action) {
   switch (action.type) {
     case 'TOGGLE_FAVOURITE':
-      if (includes(state, action.favourite)) {
-        state = without(state, action.favourite);
+      const found = find(state, (fav) => fav.namespace === action.favourite.namespace && fav.name === action.favourite.name);
+      if (found) {
+        remove(state, (fav) => fav.namespace === action.favourite.namespace && fav.name === action.favourite.name);
       } else {
         state = concat(state, [action.favourite]);
       }
+      localStorage.setItem('FAVOURITE_LIST', JSON.stringify(state));
       return state;
     default:
       return state;

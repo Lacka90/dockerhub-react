@@ -8,10 +8,12 @@ import { rootReducer } from './reducers';
 
 import { repos } from './data/repos';
 
+const favouriteList = JSON.parse(localStorage.getItem('FAVOURITE_LIST'));
+
 const initialState = {
   repos: [],
   details: {},
-  favourites: [],
+  favourites: favouriteList || [],
 };
 
 const loggerMiddleware = createLogger()
