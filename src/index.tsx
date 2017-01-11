@@ -8,7 +8,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 
 import { App } from './components/app/app';
-import { Welcome } from './components/welcome/welcome';
+import { Dashboard } from './components/dashboard/dashboard';
 import { SearchList } from './components/searchList/searchList';
 import { RepoDetail } from './components/repoDetail/repoDetail';
 
@@ -20,7 +20,7 @@ const router = (
   <Provider store={store}>
   <Router history={history}>
     <Route path="/" component={App}>
-      <IndexRoute component={Welcome}></IndexRoute>
+      <IndexRoute component={Dashboard}></IndexRoute>
       <Route path="/search/:name" component={SearchList}></Route>
       <Route path="/details/:repo(/:subrepo)" component={RepoDetail}></Route>
       <Route path="*" component={NotFound}></Route>
