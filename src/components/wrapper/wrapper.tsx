@@ -12,12 +12,17 @@ import { Favourites } from '../favourites/favourites';
 import './menu.scss';
 
 export class Wrapper extends React.Component<any, any> {
-  responseFacebook = (response) => {
+  responseFacebook(response) {
     if (response.accessToken) {
       store.dispatch(authenticate(response));
-      hashHistory.push('/');
+      console.log(response);
+
+      const path = this.props.router.getCurrentLocation();
+      if (path) {
+        return hashHistory.push(path.pathname);
+      }
+      return hashHistory.push('/');
     }
-    console.log(response);
   }
   
   render() {
@@ -49,7 +54,7 @@ export class Wrapper extends React.Component<any, any> {
         appId="1648218652139190"
         autoLoad={true}
         fields="name,email,picture"
-        callback={this.responseFacebook} />
+        callback={this.responseFacebook.bind(this)} />
     }
   }
 }
